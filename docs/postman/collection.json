@@ -1,0 +1,149 @@
+{
+	"info": {
+		"_postman_id": "2aa407bc-4cb8-46b2-9a63-468418aee679",
+		"name": "LivroApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40714717"
+	},
+	"item": [
+		{
+			"name": "Listar livros",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Livros listados com sucesso!\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/livros",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"livros"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Encontrar um único livros",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Livro encontrado com sucesso!\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/livros/{{livroId}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"livros",
+						"{{livroId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deletar um livro",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Livro deletado com sucesso!\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/livros/{{livroId}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"livros",
+						"{{livroId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cadastro de livros",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.code === 201) {\r",
+							"    const responseData = pm.response.json(); // Pega o corpo da resposta\r",
+							"    const livroId = responseData._id; // Extrai o ID do livro\r",
+							"\r",
+							"    // Armazena o ID na variável de ambiente\r",
+							"    pm.environment.set(\"livroId\", livroId);\r",
+							"}\r",
+							"\r",
+							"pm.test(\"Livro cadastrado com sucesso!\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"titulo\": \"O Senhoeqw323232233232323fdfdfd2332223242342323233eqweqr dos Anéis\",\r\n    \"autor\": \"J.R.R. qweq23232232323eqweTolkien\",\r\n    \"editora\": \"HarperCoq232323weqeqqwllins\",\r\n    \"anoPublicacao\": 19254,\r\n    \"numeroPaginas\": 12178\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/livros",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"livros"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
