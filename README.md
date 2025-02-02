@@ -1,4 +1,4 @@
-# Criando uma API Restful com IA - QA Papito
+# Criando uma API Restful com IA
 
 Este projeto foi desenvolvido durante a **Cypress Masterclass** do canal **[Fernando Papito](https://www.youtube.com/@fernandopapito)**, onde o desafio foi criar uma API Restful com ajuda do **ChatGPT**. O curso foi dividido em duas partes, abordando desde a criação da API até a implementação de testes automatizados, proporcionando uma visão completa do processo.
 
